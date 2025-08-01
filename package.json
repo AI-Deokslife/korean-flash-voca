@@ -1,0 +1,12 @@
+{
+  "name": "k-voca-app",
+  "version": "1.0.0",
+  "description": "AI 기반 Korean-Flash Voca for Vietnamese learners",
+  "scripts": {
+    "build-css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}
