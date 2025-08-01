@@ -139,18 +139,18 @@
 
         const categoryMap = {
             '전체': 'Tất cả',
+            '기타': 'Khác',
+            '직업 및 활동': 'Nghề nghiệp và hoạt động',
+            '동작': 'Hành động',
+            '자연 및 환경': 'Thiên nhiên và môi trường',
+            '감정 및 상태': 'Cảm xúc và trạng thái',
+            '장소': 'Địa điểm',
+            '문화 및 사회': 'Văn hóa và xã hội',
             '음식': 'Ẩm thực',
-            '장소': 'Nơi chốn',
-            '감정': 'Cảm xúc',
-            '사물': 'Đồ vật',
-            '사람': 'Con người',
-            '자연': 'Thiên nhiên',
-            '시간': 'Thời gian',
-            '동물': 'Động vật',
-            '행동': 'Hành động',
-            '상태': 'Trạng thái',
-            '숫자': 'Chữ số',
-            '기타': 'Khác'
+            '사람 및 관계': 'Con người và mối quan hệ',
+            '시간 및 빈도': 'Thời gian và tần suất',
+            '추상적 개념': 'Khái niệm trừu tượng',
+            '사물': 'Đồ vật'
         };
 
         // --- 데이터 로딩 및 파싱 ---
@@ -271,7 +271,12 @@
             categoryTitle.textContent = `"${levelName}" 단어의 카테고리`;
 
             const wordsInLevel = wordData.filter(d => d.grade === level);
-            const categories = ['전체', ...new Set(wordsInLevel.map(d => d.category).filter(c => c && c.trim() !== '기타'))];
+            const categories = ['전체', ...new Set(wordsInLevel.map(d => d.category).filter(c => c && c.trim() !== '' && c.trim() !== '카테고리'))];
+            
+            // 기타를 맨 마지막에 추가
+            if (wordsInLevel.some(d => d.category === '기타')) {
+                categories.push('기타');
+            }
             
             categoryButtonsContainer.innerHTML = '';
             categories.forEach(category => {
