@@ -157,7 +157,7 @@
         // --- 데이터 로딩 및 파싱 ---
         async function loadAndParseData() {
             loadingMessage.classList.remove('hidden');
-            const csvUrl = 'https://github.com/AI-Deokslife/korean-flash-voca/blob/main/categorized_words.csv';
+            const csvUrl = 'https://raw.githubusercontent.com/AI-Deokslife/ssidal/main/categorized_words.csv';
 
             try {
                 const response = await fetch(csvUrl);
